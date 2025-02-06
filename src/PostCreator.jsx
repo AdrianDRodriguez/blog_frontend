@@ -9,6 +9,9 @@ export function PostCreator() {
         <div>
           Blog: <input type="text" />
         </div>
+        <div>
+          Image: <input type="image_url" />
+        </div>
         <button type="submit">Create blog</button>
       </form>
     </div>
