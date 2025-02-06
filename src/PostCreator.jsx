@@ -6,12 +6,15 @@ export function PostCreator() {
         <div>
           Title: <input type="text" />
         </div>
+        <br/>
         <div>
           Blog: <input type="text" />
         </div>
+        <br/>
         <div>
           Image: <input type="image_url" />
         </div>
+        <br/>
         <button type="submit">Create blog</button>
       </form>
     </div>
