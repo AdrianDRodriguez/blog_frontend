@@ -3,11 +3,14 @@ import { PostCreator} from "./PostCreator"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Modal } from "./Modal";
+import {PostShow} from "./PostShow"
+
 
 
 export function PostPage() {
   const [posts, setPosts] = useState([]);
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
+  const [currentPost, serCurrentPost] = useState({});
 
   const handleIndex = () => {
     console.log ('doing something...');
@@ -27,6 +30,7 @@ export function PostPage() {
   const handleShow = (post) => {
     console.log(post);
     console.log('handling the show...');
+    serCurrentPost(post);
     setIsPostsShowVisible(true)
   }
 
@@ -43,7 +47,7 @@ export function PostPage() {
     <PostCreator/>
     <BlogIndex posts={posts} onShow={handleShow} />
     <Modal show={isPostsShowVisible} onClose={closeModal}>
-      <p> today is you </p>
+      <PostShow post={currentPost}/>
     </Modal>
     </div>
   );
