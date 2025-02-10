@@ -34,6 +34,15 @@ export function PostPage() {
     setIsPostsShowVisible(true)
   }
 
+  const handleCreate = (params)  => {
+    console.log("handleCreate...");
+    axios.post("http://localhost:3000/posts.json", params).then(response => {
+      console.log(response.data)
+
+      setPosts([...posts, response.data])
+    })
+  }
+
   const closeModal = () => {
     console.log('close the modal...');
     setIsPostsShowVisible(false)
@@ -44,7 +53,7 @@ export function PostPage() {
   return(
     <div>
     {/* <button onClick={handleIndex}>Get data from rails</button> */}
-    <PostCreator/>
+    <PostCreator onCreate={handleCreate} />
     <BlogIndex posts={posts} onShow={handleShow} />
     <Modal show={isPostsShowVisible} onClose={closeModal}>
       <PostShow post={currentPost}/>

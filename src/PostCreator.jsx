@@ -1,12 +1,12 @@
-import axios from "axios";
+// import axios from "axios";
 
-export function PostCreator() {
-
-const handleSubmit = () => {
-  axios.post("http://localhost:3000/posts.json", {title: "Batman", body: "I'M BATMAN", image:"https://assets-prd.ignimgs.com/2023/01/31/batman-blogroll-1646355379001-1675144026976.jpeg"}).then(response => {
-    console.log(response.data)
-  })
-  console.log("You submited a form!!");
+export function PostCreator({onCreate}) {
+  const handleSubmit = (event) => {
+  event.preventDefault();
+  console.log('in handle submit');
+  const params = new FormData(event.target)
+  onCreate(params)
+  event.target.reset()
 }
 
   return (
@@ -14,7 +14,7 @@ const handleSubmit = () => {
       <h1>New post</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          Title: <input type="text" />
+          Title: <input type="text" name="" />
         </div>
         <br/>
         <div>
